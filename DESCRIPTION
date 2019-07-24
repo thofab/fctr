@@ -1,0 +1,10 @@
+Package: fctr
+Type: Package
+Title: Factors with multiple lables
+Version: 0.1-01
+Date: 2019-07-24
+Author: Thomas Fabbro
+Maintainer: Thomas Fabbro <thomas.fabbro@unibas.ch>
+Description: Provide functions for compact and robust handling of categorical information using R. The core of the package are functions that allows storing a factor with several 'translations' of its levels and to pick which should be used.
+License: GPL-3
+Encoding: UTF-8
