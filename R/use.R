@@ -1,7 +1,16 @@
 use <- function(x, ...) UseMethod("use")
 use.fctr <- function(x, lang, reorder = FALSE, drop = TRUE, ...){
+  ## drop:
+  if (!is.logical(drop)) {
+    stop("argument 'drop' needs to be TRUE or FALSE")
+  }
   ## x
-  ## FIXME: assert that x is of class fctr (needed?)
+  if (!is(x, "fctr")) {
+     stop(strwrap(
+         "argument 'x' needs to be of class 'fctr',
+          e.g. generated using the function 'fctr()'",
+        prefix = " ", initial = ""))
+  }
   desc <- attr(x, "desc")
   ## reorder
   ## FIXME: assert that logical or an column name of 'lang'
@@ -16,11 +25,13 @@ use.fctr <- function(x, lang, reorder = FALSE, drop = TRUE, ...){
   } else {
     warning("argument 'reorder' provided but not used")
   }
-  ## drop:
-  ## FIXME: assert that logical
+  ##
   if (drop) {
-    return(droplevels(x))
-  } else {
-    return(x)
+    x <- droplevels(x)
   }
+  ##
+  attr(x, "desc") <- NULL
+  class(x) <- "factor"
+  ##
+  return(x)
 }

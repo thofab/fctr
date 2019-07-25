@@ -46,5 +46,34 @@ use(sf, "lang1")
 use(sf, "lang2")
 use(sf, "lang2", reorder = "order1")
 use(sf, "lang1", drop = FALSE)
+
+## or
+f <- c("a", "b", "c", "a", "a")
+l <- data.frame(lang1 = c("A", "B", "C", "D"),
+                lang2 = c("first", "second", "third", "last"),
+                lang3 = c("a", "b", "c", "d"),
+                order1 = c(5, 3, 4, 2),
+                order2 = c("z", "y", "x", "w"),
+                group1 =c("A", "B", "B", "B")
+                )
+sf <- fctr(f, l, ref = "lang3")
+
+
+## or
+catinfo <- c("nz", "nz", "ch", "fr", "ch")
+
+labeltable <- data.frame(lower = c("nz", "ch", "fr", "it"),
+                alpha2code = c("NZ", "CH", "FR", "IT"),
+                alpha3code = c("NZL", "CHE", "FRA", "ITA"),
+                english = c("New Zealand", "Switzerland", "France", "Italy"),
+                german = c("Neuseeland", "Schweiz", "Frankreich", "Italien"),
+                iso3166 = c(554, 756, 250, 380))
+                ## you can easily thake the whole list from e.g. wikipedia
+f <- fctr(catinfo, labeltable)
+use(f, "alpha2code")
+use(f, "english")
+use(f, "german")
+use(f, "alpha3code", reorder = "iso3166")
+use(f, "alpha3code", drop = FALSE)
 }
 \keyword{manip}
