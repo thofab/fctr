@@ -24,6 +24,6 @@ labeltable <- data.frame(lower = c("nz", "ch", "fr", "it"),
 f <- fctr(catinfo, labeltable)
 use(f, "alpha2code")
 use(f, "english")
-use(f, "english", reorder = "iso-3166")
+use(f, "english", reorder = "iso3166")
 use(f, "alpha3code", drop = FALSE)
 ```
