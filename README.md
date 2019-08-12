@@ -27,3 +27,4 @@ use(f, "english")
 use(f, "english", reorder = "iso3166")
 use(f, "alpha3code", drop = FALSE)
 ```
+[![Build Status](https://travis-ci.org/thofab/fctr.svg?branch=master)](https://travis-ci.org/thofab/fctr)
