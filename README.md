@@ -20,7 +20,7 @@ labeltable <- data.frame(lower = c("nz", "ch", "fr", "it"),
                 english = c("New Zealand", "Switzerland", "France", "Italy"),
                 german = c("Neuseeland", "Schweiz", "Frankreich", "Italien"),
                 iso3166 = c("554", "756", "250", "380"))
-                ## you can easily thake the whole list from e.g. wikipedia
+                ## you could easily take the whole list from e.g. wikipedia
 f <- fctr(catinfo, labeltable)
 use(f, "alpha2code")
 use(f, "english")
