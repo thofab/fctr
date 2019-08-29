@@ -13,6 +13,8 @@ This allows to have e.g. translations of categories in different languages, or s
 Additionally it also allows have different groupings of categories all in common place.
 
 ```{r taeser}
+library(githubinstall)
+githubinstall("fctr")
 catinfo <- c("nz", "nz", "ch", "fr", "ch")
 labeltable <- data.frame(lower = c("nz", "ch", "fr", "it"),
                 alpha2code = c("NZ", "CH", "FR", "IT"),
