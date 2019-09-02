@@ -14,24 +14,27 @@ use.fctr <- function(x, lang, reorder = FALSE, drop = TRUE, ...){
   desc <- attr(x, "desc")
   ## reorder
   ## FIXME: assert that logical or an column name of 'lang'
+  levels(x) <- desc[, lang]
   if (is.logical(reorder)) {
     if (reorder) {
-      levels(x) <- desc[order(desc[, lang]), lang]
+      u.levels <- desc[order(desc[, lang]), lang]
     } else {
-      levels(x) <- desc[, lang]
+      u.levels <- desc[, lang]
     }
   } else if (reorder %in% names(desc)) {
-    levels(x) <- desc[order(desc[, reorder]), lang]
+    u.levels <- desc[order(desc[, reorder]), lang]
   } else {
     warning("argument 'reorder' provided but not used")
   }
+  ## recreate the factor with the correct levels
+  ret <- factor(x, levels = unique(u.levels))
   ##
   if (drop) {
-    x <- droplevels(x)
+    ret <- droplevels(ret)
   }
   ##
-  attr(x, "desc") <- NULL
-  class(x) <- "factor"
+  ## attr(x, "desc") <- NULL
+  ## class(x) <- "factor"
   ##
-  return(x)
+  return(ret)
 }
