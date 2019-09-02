@@ -10,19 +10,22 @@ These sets of labels are stored with the factor (as attibutes).
 Everytime a factor is used e.g. for plotting, modelling it is possible to select which set of labels (and therefore set of levels) will be used in this particular case.
 
 This allows to have e.g. translations of categories in different languages, or short and long versions of category descriptions at one place.
-Additionally it also allows have different groupings of categories all in common place.
+Additionally it also allows to have different groupings of categories all in common place.
 
 ```{r taeser}
 library(devtools)
 install_github("thofab/fctr")
+##
+library(fctr)
 catinfo <- c("nz", "nz", "ch", "fr", "ch")
 labeltable <- data.frame(lower = c("nz", "ch", "fr", "it"),
                 alpha2code = c("NZ", "CH", "FR", "IT"),
                 alpha3code = c("NZL", "CHE", "FRA", "ITA"),
                 english = c("New Zealand", "Switzerland", "France", "Italy"),
                 german = c("Neuseeland", "Schweiz", "Frankreich", "Italien"),
-                iso3166 = c("554", "756", "250", "380"))
+                iso3166 = c("554", "756", "250", "380"),
                 ## you could easily take the whole list from e.g. wikipedia
+		continent = c("Australia", "Europe", "Europe", "Europe"))
 f <- fctr(catinfo, labeltable)
 use(f, "alpha2code")
 use(f, "english")
