@@ -24,12 +24,20 @@ labeltable <- data.frame(lower = c("nz", "ch", "fr", "it"),
                 english = c("New Zealand", "Switzerland", "France", "Italy"),
                 german = c("Neuseeland", "Schweiz", "Frankreich", "Italien"),
                 iso3166 = c("554", "756", "250", "380"),
-                ## you could easily take the whole list from e.g. wikipedia
 		continent = c("Australia", "Europe", "Europe", "Europe"))
+                ## you could easily take the whole list from e.g. wikipedia
+## create a "normal" factor that contains additionally the whole labeltable
+## for later use
 f <- fctr(catinfo, labeltable)
+## using one particular set of levels/labels
 use(f, "alpha2code")
+## using another set of levels/labels
 use(f, "english")
+## an example of regrouping
+use(f, "continent")
+## an example of reordering
 use(f, "english", reorder = "iso3166")
+## not dropping unused levels/labels
 use(f, "alpha3code", drop = FALSE)
 ```
 [![Build Status](https://travis-ci.org/thofab/fctr.svg?branch=master)](https://travis-ci.org/thofab/fctr)
